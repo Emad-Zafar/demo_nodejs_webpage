@@ -18,9 +18,15 @@ jobs:
           docker_layer_caching: false
       - run:
           name: Build Docker image
-          command:
-            docker build -t nodejswebapp1 -t emadzafar/nodejswebapp1:latest .
-            echo $DOCKER_PASSWORD | docker login -u emadzafar --password-stdin
+          command: |
+            docker build -t emadzafar/nodejswebapp1:latest .
+      - run:
+          name: Log in to Docker Hub
+          command: |
+            echo "$DOCKER_PASSWORD" | docker login -u emadzafar --password-stdin
+      - run:
+          name: Push Docker image
+          command: |
             docker push emadzafar/nodejswebapp1:latest
 
 workflows:
