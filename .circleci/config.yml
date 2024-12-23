@@ -36,9 +36,10 @@ jobs:
             docker push emadzafar/nodejswebapp1:latest
 
 workflows:
-  build_test:
+  build_workflow:
     jobs:
-      - build_test
+      - build_test:
           context: JIRA_WEBHOOK
-      - build_docker_image
-        
+      - build_docker_image:
+          requires:
+            - build_test
