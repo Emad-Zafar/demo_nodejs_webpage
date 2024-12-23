@@ -39,6 +39,6 @@ workflows:
   build_test:
     jobs:
       - build_test
-      - build_docker_image
-      - build
         context: JIRA_WEBHOOK
+      - build_docker_image
+        
