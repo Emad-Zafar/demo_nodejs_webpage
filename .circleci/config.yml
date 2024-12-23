@@ -41,4 +41,4 @@ workflows:
       - build_test
       - build_docker_image
       - build
-        context: JIRA_WEBHOOK_URL
+        context: $JIRA_WEBHOOK_URL
