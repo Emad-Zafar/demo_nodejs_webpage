@@ -34,6 +34,9 @@ jobs:
           name: Push Docker image
           command: |
             docker push emadzafar/nodejswebapp1:latest
+      - jira/notify:
+          pipeline_id: df32f56d-6c82-4833-9db7-fd5728b75054
+          pipeline_number: 4
 
 workflows:
   build_workflow:
@@ -43,3 +46,4 @@ workflows:
       - build_docker_image:
           requires:
             - build_test
+          context: JIRA_WEBHOOK
